@@ -38,7 +38,7 @@
  obj-$(CONFIG_CPU_LOONGSON2)	+= r4k_fpu.o r4k_switch.o
  obj-$(CONFIG_CPU_MIPS32)	+= r4k_fpu.o r4k_switch.o
  obj-$(CONFIG_CPU_MIPS64)	+= r4k_fpu.o r4k_switch.o
-@@ -92,4 +99,8 @@
+@@ -93,4 +100,8 @@
  
  obj-$(CONFIG_HAVE_STD_PC_SERIAL_PORT)	+= 8250-platform.o
  

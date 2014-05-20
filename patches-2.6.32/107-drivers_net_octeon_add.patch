@@ -9,7 +9,7 @@
  obj-$(CONFIG_PPP) += ppp_generic.o
  obj-$(CONFIG_PPP_ASYNC) += ppp_async.o
  obj-$(CONFIG_PPP_SYNC_TTY) += ppp_synctty.o
-@@ -285,3 +287,5 @@
+@@ -286,3 +288,5 @@
  obj-$(CONFIG_SFC) += sfc/
  
  obj-$(CONFIG_WIMAX) += wimax/
@@ -17,7 +17,7 @@
 +obj-$(CONFIG_OCTEON_MGMT_ETHERNET) += octeon/
 --- linux-2.6.32.33/drivers/net/Kconfig	2011-03-15 05:30:16.000000000 +0800
 +++ linux-2.6.32.33-loongson2f/drivers/net/Kconfig	2011-03-26 03:39:49.000000000 +0800
-@@ -1953,6 +1953,8 @@
+@@ -2076,6 +2076,8 @@
  
  source "drivers/net/fs_enet/Kconfig"
  
@@ -26,7 +26,7 @@
  endif # NET_ETHERNET
  
  #
-@@ -2409,6 +2411,13 @@
+@@ -2532,6 +2534,13 @@
  	  Some boards that use the Discovery chipset are the Momenco
  	  Ocelot C and Jaguar ATX and Pegasos II.
  

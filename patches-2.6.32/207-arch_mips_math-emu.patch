@@ -9,7 +9,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  #include <linux/debugfs.h>
  
  #include <asm/inst.h>
-@@ -68,7 +69,9 @@
+@@ -58,7 +59,9 @@
  
  /* Further private data for which no space exists in mips_fpu_struct */
  
@@ -18,9 +18,9 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
 +DEFINE_PER_CPU(struct mips_fpu_emulator_stats, fpuemustats);
 +#endif
  
- /* Control registers */
+ #ifdef CONFIG_MIPS_FPU_EMU
  
-@@ -212,7 +215,7 @@
+@@ -214,7 +217,7 @@
  	unsigned int cond;
  
  	if (get_user(ir, (mips_instruction __user *) xcp->cp0_epc)) {
@@ -29,7 +29,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  		return SIGBUS;
  	}
  
-@@ -243,7 +246,7 @@
+@@ -245,7 +248,7 @@
  			return SIGILL;
  		}
  		if (get_user(ir, (mips_instruction __user *) emulpc)) {
@@ -38,7 +38,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  			return SIGBUS;
  		}
  		/* __compute_return_epc() will have updated cp0_epc */
-@@ -256,16 +259,16 @@
+@@ -258,16 +261,16 @@
  	}
  
        emul:
@@ -58,7 +58,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  			return SIGBUS;
  		}
  		DITOREG(val, MIPSInst_RT(ir));
-@@ -277,10 +280,10 @@
+@@ -279,10 +282,10 @@
  			MIPSInst_SIMM(ir));
  		u64 val;
  
@@ -71,7 +71,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  			return SIGBUS;
  		}
  		break;
-@@ -291,9 +294,9 @@
+@@ -293,9 +296,9 @@
  			MIPSInst_SIMM(ir));
  		u32 val;
  
@@ -83,7 +83,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  			return SIGBUS;
  		}
  		SITOREG(val, MIPSInst_RT(ir));
-@@ -305,10 +308,10 @@
+@@ -307,10 +310,10 @@
  			MIPSInst_SIMM(ir));
  		u32 val;
  
@@ -96,7 +96,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  			return SIGBUS;
  		}
  		break;
-@@ -436,7 +439,7 @@
+@@ -438,7 +441,7 @@
  
  				if (get_user(ir,
  				    (mips_instruction __user *) xcp->cp0_epc)) {
@@ -105,7 +105,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  					return SIGBUS;
  				}
  
-@@ -602,7 +605,7 @@
+@@ -604,7 +607,7 @@
  {
  	unsigned rcsr = 0;	/* resulting csr */
  
@@ -114,7 +114,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  
  	switch (MIPSInst_FMA_FFMT(ir)) {
  	case s_fmt:{		/* 0 */
-@@ -617,9 +620,9 @@
+@@ -619,9 +622,9 @@
  			va = (void __user *) (xcp->regs[MIPSInst_FR(ir)] +
  				xcp->regs[MIPSInst_FT(ir)]);
  
@@ -126,7 +126,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  				return SIGBUS;
  			}
  			SITOREG(val, MIPSInst_FD(ir));
-@@ -629,11 +632,11 @@
+@@ -631,11 +634,11 @@
  			va = (void __user *) (xcp->regs[MIPSInst_FR(ir)] +
  				xcp->regs[MIPSInst_FT(ir)]);
  
@@ -140,7 +140,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  				return SIGBUS;
  			}
  			break;
-@@ -694,9 +697,9 @@
+@@ -696,9 +699,9 @@
  			va = (void __user *) (xcp->regs[MIPSInst_FR(ir)] +
  				xcp->regs[MIPSInst_FT(ir)]);
  
@@ -152,7 +152,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  				return SIGBUS;
  			}
  			DITOREG(val, MIPSInst_FD(ir));
-@@ -706,10 +709,10 @@
+@@ -708,10 +711,10 @@
  			va = (void __user *) (xcp->regs[MIPSInst_FR(ir)] +
  				xcp->regs[MIPSInst_FT(ir)]);
  
@@ -165,7 +165,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  				return SIGBUS;
  			}
  			break;
-@@ -776,7 +779,7 @@
+@@ -778,7 +781,7 @@
  #endif
  	} rv;			/* resulting value */
  
@@ -174,7 +174,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  	switch (rfmt = (MIPSInst_FFMT(ir) & 0xf)) {
  	case s_fmt:{		/* 0 */
  		union {
-@@ -1247,7 +1250,7 @@
+@@ -1249,7 +1252,7 @@
  		prevepc = xcp->cp0_epc;
  
  		if (get_user(insn, (mips_instruction __user *) xcp->cp0_epc)) {
@@ -183,8 +183,8 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/cp1emu.c linux-2.6.32.33-loongson2f
  			return SIGBUS;
  		}
  		if (insn == 0)
-@@ -1283,33 +1286,50 @@
- }
+@@ -1292,33 +1295,50 @@
+ #endif /* CONFIG_MIPS_FPU_EMU */
  
  #ifdef CONFIG_DEBUG_FS
 +
@@ -274,7 +274,7 @@ diff -Nur linux-2.6.32.33/arch/mips/math-emu/dsemul.c linux-2.6.32.33-loongson2f
  		return SIGBUS;
  	}
  
-@@ -136,7 +136,7 @@
+@@ -137,7 +137,7 @@
  	err |= __get_user(cookie, &fr->cookie);
  
  	if (unlikely(err || (insn != BREAK_MATH) || (cookie != BD_COOKIE))) {

@@ -1,7 +1,7 @@
 diff -Nur linux-2.6.32.33/drivers/net/phy/Kconfig linux-2.6.32.33-loongson2f/drivers/net/phy/Kconfig
 --- linux-2.6.32.33/drivers/net/phy/Kconfig	2011-03-15 05:30:16.000000000 +0800
 +++ linux-2.6.32.33-loongson2f/drivers/net/phy/Kconfig	2011-03-26 03:39:49.000000000 +0800
-@@ -115,4 +115,15 @@
+@@ -141,6 +141,17 @@
  	  To compile this driver as a module, choose M here: the module
  	  will be called mdio-gpio.
  
@@ -16,11 +16,13 @@ diff -Nur linux-2.6.32.33/drivers/net/phy/Kconfig linux-2.6.32.33-loongson2f/dri
 +
 +	  If in doubt, say Y.
 +
- endif # PHYLIB
+ config RTL8366_SMI
+ 	tristate "Driver for the RTL8366 SMI interface"
+ 	depends on GENERIC_GPIO
 diff -Nur linux-2.6.32.33/drivers/net/phy/Makefile linux-2.6.32.33-loongson2f/drivers/net/phy/Makefile
 --- linux-2.6.32.33/drivers/net/phy/Makefile	2011-03-15 05:30:16.000000000 +0800
 +++ linux-2.6.32.33-loongson2f/drivers/net/phy/Makefile	2011-03-26 03:39:49.000000000 +0800
-@@ -20,3 +20,4 @@
+@@ -29,3 +29,4 @@
  obj-$(CONFIG_MDIO_GPIO)		+= mdio-gpio.o
  obj-$(CONFIG_NATIONAL_PHY)	+= national.o
  obj-$(CONFIG_STE10XP)		+= ste10Xp.o

@@ -9,18 +9,6 @@ diff -Nur linux-2.6.32.33//scripts/Makefile.build linux-2.6.32.33-loongson2f//sc
  	"$(if $(CONFIG_64BIT),64,32)" \
  	"$(OBJDUMP)" "$(OBJCOPY)" "$(CC)" "$(LD)" "$(NM)" "$(RM)" "$(MV)" \
  	"$(if $(part-of-module),1,0)" "$(@)";
-diff -Nur linux-2.6.32.33//scripts/Makefile.lib linux-2.6.32.33-loongson2f//scripts/Makefile.lib
---- linux-2.6.32.33//scripts/Makefile.lib	2011-03-15 05:30:16.000000000 +0800
-+++ linux-2.6.32.33-loongson2f//scripts/Makefile.lib	2011-03-26 03:39:49.000000000 +0800
-@@ -230,3 +230,8 @@
- cmd_lzma = (cat $(filter-out FORCE,$^) | \
- 	lzma -9 && $(call size_append, $(filter-out FORCE,$^))) > $@ || \
- 	(rm -f $@ ; false)
-+
-+quiet_cmd_lzo = LZO    $@
-+cmd_lzo = (cat $(filter-out FORCE,$^) | \
-+	lzop -9 && $(call size_append, $(filter-out FORCE,$^))) > $@ || \
-+	(rm -f $@ ; false)
 diff -Nur linux-2.6.32.33//scripts/recordmcount.pl linux-2.6.32.33-loongson2f//scripts/recordmcount.pl
 --- linux-2.6.32.33//scripts/recordmcount.pl	2011-03-15 05:30:16.000000000 +0800
 +++ linux-2.6.32.33-loongson2f//scripts/recordmcount.pl	2011-03-26 03:39:49.000000000 +0800
