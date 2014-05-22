@@ -6,10 +6,10 @@
 #
 include $(TOPDIR)/rules.mk
 
-ARCH:=mips
+ARCH:=mipsel
 BOARD:=loongson2f
 BOARDNAME:=LoongSon 2F
-FEATURES:=squashfs
+FEATURES:=targz
 SUBTARGETS=generic
 CFLAGS=-Os -pipe -funit-at-a-time -march=r4600 -mabi=32
 #-march=loongson2f
@@ -17,8 +17,7 @@ CFLAGS=-Os -pipe -funit-at-a-time -march=r4600 -mabi=32
 LINUX_VERSION:=2.6.32.33
 
 define Target/Description
-	Marvell Avanta 88F6510/30/50/60.
-	True System-on-Chip (SoC) Solution for Universal PON Network.
+	LoongSon 2F( Lemote 2F 8089 )
 endef
 
 include $(INCLUDE_DIR)/target.mk
