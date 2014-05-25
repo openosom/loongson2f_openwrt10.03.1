@@ -11,8 +11,8 @@ BOARD:=loongson2f
 BOARDNAME:=LoongSon 2F
 FEATURES:=targz
 SUBTARGETS=generic
-CFLAGS=-Os -pipe -funit-at-a-time -march=r4600 -mabi=32
-#-march=loongson2f
+CFLAGS=-O2 -pipe -march=loongson2f -mabi=32 -funit-at-a-time
+#-march=loongson2f -march=r4600 -mabi=n32
 
 LINUX_VERSION:=2.6.32.33
 
