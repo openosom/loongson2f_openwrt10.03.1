@@ -4,5 +4,4 @@
 *.orig
 *.rej
 *~
-/bsp
 .svn/
