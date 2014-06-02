@@ -10,7 +10,6 @@ ARCH:=mipsel
 BOARD:=loongson2f
 BOARDNAME:=LoongSon 2F
 FEATURES:=targz
-SUBTARGETS=generic
 CFLAGS=-O2 -pipe -march=loongson2f -mabi=32 -funit-at-a-time
 #-march=loongson2f -march=r4600 -mabi=n32
 
