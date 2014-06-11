@@ -31,16 +31,17 @@ endef
 #
 define Image/BuildKernel
 	$(CP) $(KDIR)/vmlinux $(BIN_DIR)/$(IMG_PREFIX)-linux-$(LINUX_VERSION)-vmlinux
+	$(CP) ./vmlinux-usbinstall $(BIN_DIR)/ 
 endef
 
 ###### 3
 define mkfs/rootfs
 	$(INSTALL_DIR) $(TARGET_DIR)/boot/
 	$(CP) $(KDIR)/vmlinux $(TARGET_DIR)/boot/
-	$(TAR) -zcf $(BIN_DIR)/$(IMG_PREFIX)-rootfs.tar.gz --numeric-owner --owner=0 --group=0 -C $(TARGET_DIR)/ .
+	$(TAR) -zcf $(BIN_DIR)/loongson2f-openwrt-rootfs-2014.tar.gz --numeric-owner --owner=0 --group=0 -C $(TARGET_DIR)/ .
 
-	$(TAR) -cf $(BIN_DIR)/$(IMG_PREFIX)-rootfs.tar --numeric-owner --owner=0 --group=0 -C $(TARGET_DIR)/ .
-	$(STAGING_DIR_HOST)/bin/lzma e $(BIN_DIR)/$(IMG_PREFIX)-rootfs.tar $(BIN_DIR)/$(IMG_PREFIX)-rootfs.tar.lzma
+#	$(TAR) -cf $(BIN_DIR)/$(IMG_PREFIX)-rootfs.tar --numeric-owner --owner=0 --group=0 -C $(TARGET_DIR)/ .
+#	$(STAGING_DIR_HOST)/bin/lzma e $(BIN_DIR)/$(IMG_PREFIX)-rootfs.tar $(BIN_DIR)/$(IMG_PREFIX)-rootfs.tar.lzma
 endef
 
 define Image/mkfs/cpiogz
@@ -65,6 +66,14 @@ endef
 define Image/mkfs/ubifs
 endef
 
+#include $(INCLUDE_DIR)/download.mk
+#DL_DIR=$(BIN_DIR)
+#define Download/vmlinux_usbinstall
+#  URL:=http://www.anheng.com.cn/loongson/install/
+#  #URL:=ftp://www.bjlx.org.cn/loongson/install/
+#  FILE:=vmlinux
+#endef
+#$(eval $(call Download,vmlinux_usbinstall))
 
 
 $(eval $(call BuildImage))
