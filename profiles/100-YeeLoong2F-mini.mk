@@ -5,13 +5,13 @@
 # See /LICENSE for more information.
 #
 
-define Profile/YeeLoong2F
-  NAME:=YeeLoong2F(8089)
+define Profile/YeeLoong2F-mini
+  NAME:=YeeLoong2F(8089) mini
   PACKAGES:=
 endef
 
-define Profile/YeeLoong2F/Description
+define Profile/YeeLoong2F-mini/Description
 	YeeLoong2F (Lemote 2F 8089)
 endef
-$(eval $(call Profile,YeeLoong2F))
+$(eval $(call Profile,YeeLoong2F-mini))
 

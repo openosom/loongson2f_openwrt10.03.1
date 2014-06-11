@@ -5,8 +5,8 @@
 # See /LICENSE for more information.
 #
 
-define Profile/YeeLoong2F
-  NAME:=YeeLoong2F(8089)
+define Profile/YeeLoong2F-wifi
+  NAME:=YeeLoong2F(8089) wifi
   PACKAGES:=kmod-usb-core kmod-usb-ohci kmod-usb2 kmod-usb-storage \
 	kmod-fs-ext2 kmod-nls-cp437 kmod-nls-iso8859-1 kmod-fs-vfat \
 	kmod-loop e2fsprogs kmod-spi-bitbang \
@@ -15,8 +15,8 @@ define Profile/YeeLoong2F
 	hostapd wpa-supplicant iw
 endef
 
-define Profile/YeeLoong2F/Description
+define Profile/YeeLoong2F-wifi/Description
 	YeeLoong2F (Lemote 2F 8089)
 endef
-$(eval $(call Profile,YeeLoong2F))
+$(eval $(call Profile,YeeLoong2F-wifi))
 
