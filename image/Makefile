@@ -30,7 +30,7 @@ endef
 #endef
 #
 define Image/BuildKernel
-	$(CP) $(KDIR)/vmlinux $(BIN_DIR)/$(IMG_PREFIX)-linux-$(LINUX_VERSION)-vmlinux
+	$(CP) $(KDIR)/vmlinux $(BIN_DIR)/loongson2f-openwrt-linux-$(LINUX_VERSION)-vmlinux
 	$(CP) ./vmlinux-usbinstall $(BIN_DIR)/ 
 endef
 
